@@ -3,13 +3,15 @@
 
 @section('content')
     <div class="row">
+        <div class="pull-right">
+            <a class="btn btn-primary float-right" href="{{route('company.index')}}">Back</a>
+        </div>
         <div class="col-lg-12 margin-tb">
+
             <div class="pull-left">
                 <h2>  {{ $company->name }}</h2>
             </div>
-            <div class="pull-right">
-                <a class="btn btn-primary" href="{{ route('company.index') }}" title="Go back"> <i class="fas fa-backward "></i> </a>
-            </div>
+
         </div>
     </div>
 

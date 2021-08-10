@@ -40,25 +40,35 @@
         <form action="{{ route('image.upload.post') }}" method="POST" enctype="multipart/form-data">
 
             @csrf
-
-
             <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                    <strong>Image</strong>
-                    <input type="file" name="image" class="form-control" placeholder="image" required accept="image/*">
-
+                <div class="custom-file">
+                    <div class="form-group">
+                        <input type="file" name="image" placeholder="image" class="custom-file-input" required
+                               accept="image/*">
+                        <label class="custom-file-label" for="customFile">Choose file</label>
+                    </div>
                 </div>
             </div>
+
+            {{--            <div class="col-xs-12 col-sm-12 col-md-12">--}}
+            {{--                <div class="form-group">--}}
+            {{--                    <strong>Image</strong>--}}
+            {{--                    <input type="file" name="image" class="form-control" placeholder="image" required accept="image/*">--}}
+
+            {{--                </div>--}}
+            {{--            </div>--}}
 
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>CompanyName:</strong>
-                    <input type="text" value="{{old('email')}}" name="name" class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}" placeholder="company name">
+                    <input type="text" value="{{old('email')}}" name="name"
+                           class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}"
+                           placeholder="company name">
 
                     @if($errors->has('name'))
-                    <div class="invalid-feedback">
-                        {{ $errors->first('name') }}
-                    </div>
+                        <div class="invalid-feedback">
+                            {{ $errors->first('name') }}
+                        </div>
                     @endif
                 </div>
 
@@ -74,14 +84,16 @@
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>Web</strong>
-                    <input type="text" value="{{old('website')}}" name="website" class="form-control" placeholder="website">
+                    <input type="text" value="{{old('website')}}" name="website" class="form-control"
+                           placeholder="website">
                 </div>
             </div>
 
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>Phone</strong>
-                    <input type="text" value="{{old('phone')}}" name="phone" class="form-control {{$errors->has('phone') ? 'is-invalid' : ''}}" placeholder="phone">
+                    <input type="text" value="{{old('phone')}}" name="phone"
+                           class="form-control {{$errors->has('phone') ? 'is-invalid' : ''}}" placeholder="phone">
 
                     @if($errors->has('phone'))
                         <div class="invalid-feedback">
@@ -94,13 +106,14 @@
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>Address</strong>
-                    <input type="text" value="{{old('address')}}" name="address" class="form-control" placeholder="address">
+                    <input type="text" value="{{old('address')}}" name="address" class="form-control"
+                           placeholder="address">
                 </div>
             </div>
 
             <div class="col-xs-12 col-sm-12 col-md-12 text-center">
                 <button type="submit" class="btn btn-primary">Save</button>
             </div>
-        </div>
-    </form>
-    @endsection
+            </div>
+        </form>
+@endsection

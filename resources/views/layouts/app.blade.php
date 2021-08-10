@@ -48,8 +48,8 @@
                 <li class="nav-item active">
                     <a class="nav-link" href="/employee">Employees <span class="sr-only">(current)</span></a>
                 </li>
-
             </ul>
+
             <ul class="navbar-nav ml-auto">
                 <!-- Authentication Links -->
                 @guest

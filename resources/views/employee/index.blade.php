@@ -62,13 +62,13 @@
                 <td>
 
                     <form action="{{route('employee.destroy',$employee->id)}}" method="POST">
-                        <a class="btn btn-info" href="{{route('employee.show',$employee->id)}}">Show</a>
-                        <a class="btn btn-primary" href="{{route('employee.edit',$employee->id)}}">Edit</a>
+                        <a class="btn btn-info btn-sm" href="{{route('employee.show',$employee->id)}}">Show</a>
+                        <a class="btn btn-primary btn-sm" href="{{route('employee.edit',$employee->id)}}">Edit</a>
 
                         @csrf
                         @method('DELETE')
 
-                        <button type="submit" class="btn btn-danger">Delete</button>
+                        <button type="submit" class="btn btn-danger btn-sm">Delete</button>
                     </form>
                 </td>
             </tr>

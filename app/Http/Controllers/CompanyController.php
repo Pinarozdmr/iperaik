@@ -47,7 +47,7 @@ class CompanyController extends Controller
     }
     public function index()
     {
-        $companies= Company:: paginate(0);
+        $companies= Company::all();
         return view('company.index', compact('companies'));
     }
 

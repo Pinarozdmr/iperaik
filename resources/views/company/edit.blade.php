@@ -34,10 +34,13 @@
 
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
-
-                    <strong>Image</strong>
-                    <input type="text" name="image" class="form-control" placeholder="image">
-                    <img src="/image/{{ $company->image }}" width="65px" height="65px">
+                    <div class="custom-file">
+                        <input type="file" class="custom-file-input" id="customFile">
+                        <label class="custom-file-label" for="customFile">Choose file</label>
+                    </div>
+{{--                    <strong>Image</strong>--}}
+{{--                    <input type="text" name="image" class="form-control" placeholder="image">--}}
+{{--                    <img src="/image/{{ $company->image }}" width="65px" height="65px">--}}
 
                 </div>
             </div>
