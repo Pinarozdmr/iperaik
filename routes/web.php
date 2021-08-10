@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Input;
 
@@ -18,13 +19,21 @@ use Illuminate\Support\Facades\Input;
 
 Auth::routes();
 
-Route::get('/', [\App\Http\Controllers\HomeController::class, 'index'])->middleware('auth');
+Route::get('/', [HomeController::class, 'index'])->middleware('auth');
 
-
+//Route::resource('home',HomeController::class,'home');
 Route::resource('company',CompanyController::class);
-
 Route::resource('employee',EmployeeController::class);
 
 Route::get('image-upload', [ CompanyController::class, 'imageUpload' ])->name('image.upload');
-
 Route::post('image-upload', [ CompanyController::class, 'imageUploadPost' ])->name('image.upload.post');
+
+//Route::resource('/search', CompanyController::class);
+//Route::resource('/search', EmployeeController::class);
+
+//Route::put('/company',[CompanyController::class,'edit'])->name('company.edit');
+//Route::get('/company',[CompanyController::class,'show'])->name('company.show');
+//Route::post('company',[CompanyController::class,'store'])->name('company.store');
+//Route::get('/companies/index',[CompanyController::class,'index'])->name('company.index');
+
+

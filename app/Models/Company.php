@@ -15,6 +15,7 @@ class Company extends Model
         'image', 'name', 'address', 'phone', 'email', 'website',
     ];
 
+
     public function getLogoImageAttribute(): string
     {
         return Storage::url('company_logo/'.$this->image);

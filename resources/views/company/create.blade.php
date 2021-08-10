@@ -5,53 +5,37 @@
     <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
-
                 <a class="btn btn-primary" href="{{route('company.index')}}">Back</a>
             </div>
         </div>
-
     </div>
 
     <form action="{{route('company.store')}}" method="POST" enctype="multipart/form-data">
 
         @csrf
         @if ($message = Session::get('success'))
-
             <div class="alert alert-success alert-block">
-
                 <button type="button" class="close" data-dismiss="alert">×</button>
-
                 <strong>{{ $message }}</strong>
-
             </div>
 
             <img src="images/{{ Session::get('image') }}">
 
         @endif
 
-
-
         @if (count($errors) > 0)
 
             <div class="alert alert-danger">
-
                 <strong>Whoops!</strong> There were some problems with your input.
-
                 <ul>
-
                     @foreach ($errors->all() as $error)
 
                         <li>{{ $error }}</li>
 
                     @endforeach
-
                 </ul>
-
             </div>
-
         @endif
-
-
 
         <form action="{{ route('image.upload.post') }}" method="POST" enctype="multipart/form-data">
 

@@ -6,7 +6,7 @@ use App\Http\Requests\CompanyFormRequest;
 use App\Models\Company;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
-
+use App\Models\Category;
 class CompanyController extends Controller
 {
     /**
@@ -24,14 +24,11 @@ class CompanyController extends Controller
     }
 
     /**
-
      * Display a listing of the resource.
-
      *
-
      * @return \Illuminate\Http\Response
-
      */
+
 
     public function imageUploadPost(Request $request)
 
@@ -43,21 +40,15 @@ class CompanyController extends Controller
 
         /* Store $imageName name in DATABASE from HERE */
 
-
         return back()
-
             ->with('success','You have successfully upload image.')
-
             ->with('image',$imageName);
 
     }
-
     public function index()
     {
-        $companies= Company:: paginate(10);
+        $companies= Company:: paginate(0);
         return view('company.index', compact('companies'));
-
-
     }
 
     /**
@@ -96,17 +87,15 @@ class CompanyController extends Controller
             ->with('success','Companies created successfully.');
 
     }
-
     /**
      * Display the specified resource.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Company $companies)
+    public function show(Company $company)
     {
-    return view('company.show',compact('companies'));
-
+        return view('company.show',compact('company'));
     }
 
     /**

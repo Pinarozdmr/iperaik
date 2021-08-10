@@ -8,32 +8,37 @@
     <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
-                <a class="btn btn-success" href="{{route('employee.create')}}"> + Create New Employee</a>
+                <a href="{{route('employee.create')}}" class="btn btn-success float-right"> + Create New Employee</a>
             </div>
         </div>
     </div>
 
+    <hr>
     <form action="/search" method="POST" role="search">
         {{ csrf_field() }}
 
-        <div class="input-group">
-            <input type="text" class="form-control" name="q"
-                   placeholder="Search Employee"> <span class="input-group-btn">
-            <button type="submit" class="btn btn-default">
-                <span class="Search"></span>
-            </button>
-        </span>
-        </div>
-    </form>
+{{--        <div class="card my-4">--}}
+{{--            <h5 class="card-header">Search</h5>--}}
+{{--            <form class="card-body" action="/search" method="GET" role="search">--}}
+{{--                {{ csrf_field() }}--}}
+{{--                <div class="input-group">--}}
+{{--                    <input type="text" class="form-control" placeholder="Search for..." name="q">--}}
+{{--                    <span class="input-group-btn">--}}
+{{--            <button class="btn btn-secondary" type="submit">Go!</button>--}}
+{{--          </span>--}}
+{{--                </div>--}}
+{{--            </form>--}}
+{{--        </div>--}}
 
 
     @if($message=Session::get('Success'))
         <div class="alert alert-success">
             <p>{{$message}}</p>
         </div>
-
     @endif
-    <table class="table table-bordered">
+
+    <table class="table table-bordered" id="employees">
+        <thead>
         <tr>
             <th>CompanyId</th>
             <th>FirstName</th>
@@ -43,6 +48,9 @@
 
             <th width="280px">Action</th>
         </tr>
+        </thead>
+        <tbody>
+
         @foreach($employees as $employee)
             <tr>
                 <td>{{$employee->company_id}}</td>
@@ -52,9 +60,9 @@
                 <td>{{$employee->phone}}</td>
 
                 <td>
+
                     <form action="{{route('employee.destroy',$employee->id)}}" method="POST">
                         <a class="btn btn-info" href="{{route('employee.show',$employee->id)}}">Show</a>
-
                         <a class="btn btn-primary" href="{{route('employee.edit',$employee->id)}}">Edit</a>
 
                         @csrf
@@ -65,12 +73,16 @@
                 </td>
             </tr>
         @endforeach
+        </tbody>
     </table>
 
-{{--    <a class="btn btn-primary" href="{{$employees->previousPageUrl()}}">Back</a>--}}
+        <script>
+            $(document).ready( function () {
+                $('#employees').DataTable();
+            } );
+        </script>
 
-{{--    <a class="btn btn-primary" href="{{$employees->nextPageUrl()}}">Forward</a>--}}
-
-    {{$employees->links('vendor.pagination.bootstrap-4')}}
-
+    {{--     {{$employees->links('vendor.pagination.bootstrap-4')}}--}}
+    {{--    <a class="btn btn-primary" href="{{$employees->previousPageUrl()}}">Back</a>--}}
+    {{--    <a class="btn btn-primary" href="{{$employees->nextPageUrl()}}">Forward</a>--}}
 @endsection

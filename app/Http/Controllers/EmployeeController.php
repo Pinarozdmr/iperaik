@@ -16,7 +16,7 @@ class EmployeeController extends Controller
      */
     public function index()
     {
-        $employees= Employee:: paginate(10);
+        $employees= Employee:: paginate(0);
         return view('employee.index', compact('employees'));
 
     }
@@ -52,9 +52,9 @@ class EmployeeController extends Controller
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Employee $employees)
+    public function show(Employee $employee)
     {
-        return view('employee.show',compact('employees'));
+        return view('employee.show',compact('employee'));
 
     }
 
