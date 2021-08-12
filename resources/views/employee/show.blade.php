@@ -10,7 +10,7 @@
 {{--            <div class="pull-right" id="right">--}}
 {{--                <a class="btn btn-primary" href="{{ route('employee.index') }}" title="Back">Back</a>--}}
 {{--            </div>--}}
-            <a href="{{ route('employee.index') }}" class="btn btn-primary float-right" title="Back">Back</a>
+            <a href="{{ route('employee.index') }}" class="btn btn-secondary float-right" title="Back">Back</a>
 
         </div>
     </div>

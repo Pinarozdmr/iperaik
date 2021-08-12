@@ -18,15 +18,20 @@ use Illuminate\Support\Facades\Input;
 */
 
 Auth::routes();
+Route::group(['middleware'=>'auth'],function (){
 
-Route::get('/', [HomeController::class, 'index'])->middleware('auth');
+    Route::get('/', [HomeController::class, 'index']);
+
+    Route::resource('company',CompanyController::class);
+    Route::resource('employee',EmployeeController::class);
+
+    Route::get('image-upload', [ CompanyController::class, 'imageUpload' ])->name('image.upload');
+    Route::post('image-upload', [ CompanyController::class, 'imageUploadPost' ])->name('image.upload.post');
+});
+
 
 //Route::resource('home',HomeController::class,'home');
-Route::resource('company',CompanyController::class);
-Route::resource('employee',EmployeeController::class);
 
-Route::get('image-upload', [ CompanyController::class, 'imageUpload' ])->name('image.upload');
-Route::post('image-upload', [ CompanyController::class, 'imageUploadPost' ])->name('image.upload.post');
 
 //Route::resource('/search', CompanyController::class);
 //Route::resource('/search', EmployeeController::class);

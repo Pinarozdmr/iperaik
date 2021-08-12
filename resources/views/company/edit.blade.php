@@ -5,13 +5,14 @@
 
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
-                <h2>Edit</h2>
+                <h2><b>Edit</b></h2>
             </div>
             <div class="pull-right">
-                <a class="btn btn-primary" href="{{route('company.index')}}">Back</a>
+                <a href="{{ route('company.index') }}" class="btn btn-secondary float-right" title="Back">Back</a>
             </div>
         </div>
     </div>
+   <hr>
 
     @if($errors->any())
         <div class="alert alert-danger">
@@ -35,7 +36,7 @@
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <div class="custom-file">
-                        <input type="file" class="custom-file-input" id="customFile">
+                        <input type="file" name="image" placeholder="image" class="custom-file-input" id="customFile">
                         <label class="custom-file-label" for="customFile">Choose file</label>
                     </div>
 {{--                    <strong>Image</strong>--}}
@@ -48,40 +49,40 @@
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>CompanyName:</strong>
-                    <input type="text" name="companyname" class="form-control" placeholder="name" value="{{$company->companyname}}">
+                    <input type="text" name="name" class="form-control" placeholder="name" value="{{$company->name}}">
                 </div>
             </div>
 
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
-                    <strong>Email</strong>
+                    <strong>Email:</strong>
                     <input type="text" name="email" class="form-control" placeholder="email" value="{{$company->email}}">
                 </div>
             </div>
 
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
-                    <strong>Web</strong>
-                    <input type="text" name="web" class="form-control" placeholder="web" value="{{$company->web}}">
+                    <strong>Web Site:</strong>
+                    <input type="text" name="website" class="form-control" placeholder="web" value="{{$company->website}}">
                 </div>
             </div>
 
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
-                    <strong>Phone</strong>
+                    <strong>Phone:</strong>
                     <input type="text" name="phone" class="form-control" placeholder="phone" value="{{$company->phone}}">
                 </div>
             </div>
 
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
-                    <strong>Address</strong>
+                    <strong>Address:</strong>
                     <input type="text" name="address" class="form-control" placeholder="address" {{$company->address}}>
                 </div>
             </div>
 
             <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                <button type="submit" class="btn btn-primary">Update Company</button>
+                <button type="submit" class="btn btn-dark">Update Company</button>
             </div>
         </div>
     </form>

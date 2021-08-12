@@ -1,19 +1,26 @@
 @extends('layouts.app')
 
-
 @section('content')
     <div class="row">
-        <div class="pull-right">
-            <a class="btn btn-primary float-right" href="{{route('company.index')}}">Back</a>
-        </div>
+
         <div class="col-lg-12 margin-tb">
-
             <div class="pull-left">
-                <h2>  {{ $company->name }}</h2>
+                <h2><b>Detail</b></h2>
             </div>
-
+            <div class="pull-right">
+                <a href="{{ route('company.index') }}" class="btn btn-secondary float-right" title="Back">Back</a>
+            </div>
         </div>
     </div>
+    <hr>
+            <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="pull-left">
+                <h2> <b>{{ $company->name }}</b></h2>
+            </div>
+        </div>
+    </div>
+
 
     <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-12">
@@ -22,6 +29,7 @@
                 {{ $company->name }}
             </div>
         </div>
+
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Address:</strong>
@@ -42,8 +50,8 @@
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
-                <strong>Logo:</strong>
-                <img src="/images/{{ $company->logo }}" width="200px">
+                <strong>Image:</strong>
+                <img src="{{ $company->logo_image }}" width="60px" height="60px">
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">

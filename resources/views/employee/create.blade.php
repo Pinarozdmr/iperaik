@@ -2,15 +2,18 @@
 
 @section('content')
 
-        <div class="row">
-            <div class="col-lg-12 margin-tb">
-                <div class="pull-left">
+    <div class="row">
 
-                    <a class="btn btn-primary" href="{{route('employee.index')}}">Back</a>
-                </div>
+        <div class="col-lg-12 margin-tb">
+            <div class="pull-left">
+                <h2><b>Create Employee</b></h2>
             </div>
-
+            <div class="pull-right">
+                <a href="{{ route('employee.index') }}" class="btn btn-secondary float-right" title="Back">Back</a>
+            </div>
         </div>
+    </div>
+    <hr>
 
         <form action="{{route('employee.store')}}" method="POST" enctype="multipart/form-data">
 
@@ -18,7 +21,7 @@
 
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
-                        <strong>FirstName:</strong>
+                        <strong>First Name:</strong>
                         <input type="text" name="firstname" class="form-control {{ $errors->has('firstname') ? 'is-invalid' : '' }}" placeholder="firstname">
 
                         @if($errors->has('firstname'))
@@ -31,7 +34,7 @@
 
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
-                        <strong>LastName</strong>
+                        <strong>Last Name:</strong>
                         <input type="text" name="lastname" class="form-control {{ $errors->has('firstname') ? 'is-invalid' : '' }}" placeholder="lastname">
 
                         @if($errors->has('firstname'))
@@ -45,7 +48,7 @@
 
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
-                        <strong>Email</strong>
+                        <strong>Email:</strong>
                         <input type="text" name="email" class="form-control" placeholder="email">
                     </div>
                 </div>
@@ -54,7 +57,7 @@
 
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
-                        <strong>Phone</strong>
+                        <strong>Phone:</strong>
                         <input type="text" name="phone" class="form-control {{$errors-> has('phone') ? 'is-invalid' : ''}}" placeholder="phone">
 
                         @if($errors->has ('phone'))
@@ -67,19 +70,13 @@
 
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
-                    <strong>CompanyId</strong>
-                    <input type="text" name="company_id" class="form-control {{$errors-> has('company_id') ? 'is-invalid' : ''}}" placeholder="company_id">
-
-                    @if($errors->has ('company_id'))
-                        <div class="invalid-feedback">
-                            {{$errors->first('company_id')}}
-                        </div>
-                    @endif
+                    <strong>Company Name:</strong>
+                    <input type="text" name="company_id" class="form-control" placeholder="companyname">
                 </div>
             </div>
 
                 <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                    <button type="submit" class="btn btn-primary">Save</button>
+                    <button type="submit" class="btn btn-dark">Add</button>
                 </div>
             </div>
         </form>

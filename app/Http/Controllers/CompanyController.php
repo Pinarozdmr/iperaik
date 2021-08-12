@@ -16,11 +16,8 @@ class CompanyController extends Controller
      */
 
     public function imageUpload()
-
     {
-
         return view('imageUpload');
-
     }
 
     /**
@@ -29,9 +26,7 @@ class CompanyController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-
     public function imageUploadPost(Request $request)
-
     {
 
         $imageName = time().'.'.$request->image->extension();
@@ -155,4 +150,5 @@ class CompanyController extends Controller
 
 
     }
+
 }

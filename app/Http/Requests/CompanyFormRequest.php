@@ -28,8 +28,8 @@ class CompanyFormRequest extends FormRequest
             'email'=>'required|email',
             'website' =>'required',
             'phone' =>'required',
-            'image'=>'required|max:5048',
-
+            'image'=>'required',
+            'address'=>'required',
         ];
     }
 }

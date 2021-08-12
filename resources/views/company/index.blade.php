@@ -6,8 +6,8 @@
     <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
-                <a class="btn btn-secondary float-right" href="{{route('company.create')}}"> + Create New Companies </a>
-                <h2 style="text-align:left">COMPANIES</h2>
+                <a class="btn btn-secondary float-right" href="{{route('company.create')}}"> + Create New Company </a>
+                <h2><b>COMPANIES</b></h2>
 
             </div>
         </div>

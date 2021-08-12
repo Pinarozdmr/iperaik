@@ -3,13 +3,17 @@
 @section('content')
 
     <div class="row">
+
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
-                <a class="btn btn-primary" href="{{route('company.index')}}">Back</a>
+                <h2><b>Create Company</b></h2>
+            </div>
+            <div class="pull-right">
+                <a href="{{ route('company.index') }}" class="btn btn-secondary float-right" title="Back">Back</a>
             </div>
         </div>
     </div>
-
+    <hr>
     <form action="{{route('company.store')}}" method="POST" enctype="multipart/form-data">
 
         @csrf
@@ -29,9 +33,7 @@
                 <strong>Whoops!</strong> There were some problems with your input.
                 <ul>
                     @foreach ($errors->all() as $error)
-
-                        <li>{{ $error }}</li>
-
+{{--                        <li>{{ $error }}</li>--}}
                     @endforeach
                 </ul>
             </div>
@@ -41,15 +43,15 @@
 
             @csrf
             <div class="col-xs-12 col-sm-12 col-md-12">
+                <strong>Image:</strong>
                 <div class="custom-file">
                     <div class="form-group">
-                        <input type="file" name="image" placeholder="image" class="custom-file-input" required
-                               accept="image/*">
+                        <input type="file" name="image" placeholder="image" class="custom-file-input" >
                         <label class="custom-file-label" for="customFile">Choose file</label>
                     </div>
                 </div>
             </div>
-
+           <br>
             {{--            <div class="col-xs-12 col-sm-12 col-md-12">--}}
             {{--                <div class="form-group">--}}
             {{--                    <strong>Image</strong>--}}
@@ -76,14 +78,14 @@
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
-                    <strong>Email</strong>
+                    <strong>Email:</strong>
                     <input type="text" value="{{old('email')}}" name="email" class="form-control" placeholder="email">
                 </div>
             </div>
 
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
-                    <strong>Web</strong>
+                    <strong>Web:</strong>
                     <input type="text" value="{{old('website')}}" name="website" class="form-control"
                            placeholder="website">
                 </div>
@@ -91,28 +93,21 @@
 
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
-                    <strong>Phone</strong>
-                    <input type="text" value="{{old('phone')}}" name="phone"
-                           class="form-control {{$errors->has('phone') ? 'is-invalid' : ''}}" placeholder="phone">
+                    <strong>Phone:</strong>
+                    <input type="text" value="{{old('phone')}}" name="phone" class="form-control " placeholder="phone">
 
-                    @if($errors->has('phone'))
-                        <div class="invalid-feedback">
-                            {{$errors->first('phone')}}
-                        </div>
-                    @endif
                 </div>
             </div>
 
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
-                    <strong>Address</strong>
-                    <input type="text" value="{{old('address')}}" name="address" class="form-control"
-                           placeholder="address">
+                    <strong>Address:</strong>
+                    <input type="text" value="{{old('address')}}" name="address" class="form-control" placeholder="address">
                 </div>
             </div>
 
             <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                <button type="submit" class="btn btn-primary">Save</button>
+                <button type="submit" class="btn btn-dark">Add</button>
             </div>
             </div>
         </form>

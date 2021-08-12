@@ -1,22 +1,20 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="pull-left">
-        <h2>EMPLOYEES</h2>
-    </div>
 
     <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
-                <a href="{{route('employee.create')}}" class="btn btn-success float-right"> + Create New Employee</a>
+                <a href="{{route('employee.create')}}" class="btn btn-secondary float-right"> + Create New Employee</a>
+                <h2><b>EMPLOYEES</b></h2>
             </div>
         </div>
     </div>
-
     <hr>
-    <form action="/search" method="POST" role="search">
-        {{ csrf_field() }}
 
+
+{{--    <form action="/search" method="POST" role="search">--}}
+{{--        {{ csrf_field() }}--}}
 {{--        <div class="card my-4">--}}
 {{--            <h5 class="card-header">Search</h5>--}}
 {{--            <form class="card-body" action="/search" method="GET" role="search">--}}
@@ -40,7 +38,7 @@
     <table class="table table-bordered" id="employees">
         <thead>
         <tr>
-            <th>CompanyId</th>
+            <th>CompanyName</th>
             <th>FirstName</th>
             <th>LastName</th>
             <th>Email</th>
@@ -58,7 +56,6 @@
                 <td>{{$employee->lastname}}</td>
                 <td>{{$employee->email}}</td>
                 <td>{{$employee->phone}}</td>
-
                 <td>
 
                     <form action="{{route('employee.destroy',$employee->id)}}" method="POST">
