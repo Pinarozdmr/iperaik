@@ -4,7 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\CompanyFormRequest;
 use App\Models\Company;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Storage;
 use App\Models\Category;
 class CompanyController extends Controller
@@ -12,7 +17,7 @@ class CompanyController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
 
     public function imageUpload()
@@ -23,7 +28,7 @@ class CompanyController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
 
     public function imageUploadPost(Request $request)
@@ -49,7 +54,7 @@ class CompanyController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\Response
+     * @return Application|Factory|View
      */
 
 
@@ -62,12 +67,16 @@ class CompanyController extends Controller
      * Store a newly created resource in storage.
      *
      * @param CompanyFormRequest $request
-     * @return \Illuminate\Http\Response
+     * @return RedirectResponse
      */
     public function store(CompanyFormRequest $request)
     {
-        $input = $request->all();
+        $request->validate([
+        ]);
 
+        Company::create($request->all());
+
+        $input=$request->all();
         if ($image = $request->file('image')) {
             $destinationPath = 'app/';
             $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
@@ -82,11 +91,12 @@ class CompanyController extends Controller
             ->with('success','Companies created successfully.');
 
     }
+
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param Company $company
+     * @return Application|Factory|View
      */
     public function show(Company $company)
     {
@@ -96,8 +106,8 @@ class CompanyController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param Company $company
+     * @return Application|Factory|View
      */
     public function edit(Company $company)
     {
@@ -108,9 +118,9 @@ class CompanyController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @param Company $company
+     * @return Response
      */
     public function update(Request $request, Company $company)
     {
@@ -139,7 +149,7 @@ class CompanyController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function destroy(Company $company)
     {

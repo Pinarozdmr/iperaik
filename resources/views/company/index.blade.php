@@ -6,7 +6,7 @@
     <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
-                <a class="btn btn-secondary float-right" href="{{route('company.create')}}"> + Create New Company </a>
+                <a class="btn btn-secondary float-right" href="{{route('company.create')}}"><u> + Create New Company </u></a>
                 <h2><b>COMPANIES</b></h2>
 
             </div>
@@ -23,14 +23,14 @@
     <table class="table table-bordered" id="companies">
         <thead>
         <tr>
-            <th>Id</th>
-            <th>Image</th>
-            <th>Name</th>
-            <th>Email</th>
-            <th>Web</th>
-            <th>Phone</th>
-            <th>Address</th>
-            <th width="150px">Action</th>
+            <th><u>Id</u></th>
+            <th><u>Image</u></th>
+            <th><u>Name</u></th>
+            <th><u>Email</u></th>
+            <th><u>Web</u></th>
+            <th><u>Phone</u></th>
+            <th><u>Address</u></th>
+            <th width="150px"><u>Action</u></th>
         </tr>
         </thead>
         <tbody>
@@ -52,6 +52,7 @@
 
                         @csrf
                         @method('DELETE')
+
 
                         <button type="submit" class="btn btn-danger btn-sm">Delete</button>
                     </form>

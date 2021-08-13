@@ -25,11 +25,11 @@ class CompanyFormRequest extends FormRequest
     {
         return [
             'name'=>'required',
-            'email'=>'required|email',
-            'website' =>'required',
-            'phone' =>'required',
-            'image'=>'required',
-            'address'=>'required',
+            'email'=>'nullable|email|unique:companies',
+            'website' =>'nullable|url',
+            'phone' =>'nullable|min:11|numeric',
+            'image'=>'nullable|image|mimes:jpeg,png,jpg,gif,svg',
+            'address'=>'nullable',
         ];
     }
 }

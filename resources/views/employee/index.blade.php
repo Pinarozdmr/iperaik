@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
-                <a href="{{route('employee.create')}}" class="btn btn-secondary float-right"> + Create New Employee</a>
+                <a href="{{route('employee.create')}}" class="btn btn-secondary float-right"><u> + Create New Employee</u></a>
                 <h2><b>EMPLOYEES</b></h2>
             </div>
         </div>
@@ -38,20 +38,20 @@
     <table class="table table-bordered" id="employees">
         <thead>
         <tr>
-            <th>CompanyName</th>
-            <th>FirstName</th>
-            <th>LastName</th>
-            <th>Email</th>
-            <th>Phone</th>
+            <th><u>CompanyName</u></th>
+            <th><u>FirstName</u></th>
+            <th><u>LastName</u></th>
+            <th><u>Email</u></th>
+            <th><u>Phone</u></th>
 
-            <th width="280px">Action</th>
+            <th width="280px"><u>Action</u></th>
         </tr>
         </thead>
         <tbody>
 
         @foreach($employees as $employee)
             <tr>
-                <td>{{$employee->company_id}}</td>
+                <td>{{$employee->company->name}}</td>
                 <td>{{$employee->firstname}}</td>
                 <td>{{$employee->lastname}}</td>
                 <td>{{$employee->email}}</td>

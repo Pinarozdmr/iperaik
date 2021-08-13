@@ -36,7 +36,7 @@
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <div class="custom-file">
-                        <input type="file" name="image" placeholder="image" class="custom-file-input" id="customFile">
+                        <input type="file" name="image" placeholder="image" class="custom-file-input" id="customFile" >
                         <label class="custom-file-label" for="customFile">Choose file</label>
                     </div>
 {{--                    <strong>Image</strong>--}}
@@ -77,7 +77,7 @@
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>Address:</strong>
-                    <input type="text" name="address" class="form-control" placeholder="address" {{$company->address}}>
+                    <input type="text" name="address" class="form-control" placeholder="address" value="{{$company->address}}">
                 </div>
             </div>
 

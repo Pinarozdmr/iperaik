@@ -20,7 +20,7 @@ use Illuminate\Support\Facades\Input;
 Auth::routes();
 Route::group(['middleware'=>'auth'],function (){
 
-    Route::get('/', [HomeController::class, 'index']);
+    Route::get('/', [CompanyController::class, 'index']);
 
     Route::resource('company',CompanyController::class);
     Route::resource('employee',EmployeeController::class);

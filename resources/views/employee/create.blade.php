@@ -72,6 +72,12 @@
                 <div class="form-group">
                     <strong>Company Name:</strong>
                     <input type="text" name="company_id" class="form-control" placeholder="companyname">
+{{--                    <select class="custom-select"--}}
+{{--                            name="company_id" {{ $errors->has('company_id') ? 'error' : '' }}>--}}
+{{--                        @foreach($companies as $company)--}}
+{{--                            <option value="{{$company->id}}">{{$company->name}}</option>--}}
+{{--                        @endforeach--}}
+{{--                    </select>--}}
                 </div>
             </div>
 
