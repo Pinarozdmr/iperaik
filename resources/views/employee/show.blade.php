@@ -19,37 +19,37 @@
     <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
-                <strong>First Name:</strong>
+                <strong><u>First Name:</u></strong>
                 {{ $employee->firstname }}
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
-                <strong>Last Name:</strong>
+                <strong><u>Last Name:</u></strong>
                 {{ $employee->lastname }}
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
-                <strong>Email:</strong>
+                <strong><u>Email:</u></strong>
                 {{ $employee->email }}
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
-                <strong>Phone:</strong>
+                <strong><u>Phone:</u></strong>
                 {{ $employee->phone }}
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
-                <strong>Company:</strong>
-                {{ $employee->company_id }}
+                <strong><u>Company:</u></strong>
+                {{ $employee->company->name}}
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
-                <strong>Date Created:</strong>
+                <strong><u>Date Created:</u></strong>
                 {{ date_format($employee->created_at, 'jS M Y') }}
             </div>
         </div>

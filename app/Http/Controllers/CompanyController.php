@@ -137,8 +137,8 @@ class CompanyController extends Controller
 
         $company->update($input);
 
-        return redirect()->route('products.index')
-            ->with('success','Product updated successfully');
+        return redirect()->route('company.index')
+            ->with('success','Company updated successfully');
     }
 
 

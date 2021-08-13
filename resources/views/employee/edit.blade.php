@@ -66,7 +66,12 @@
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>CompanyName</strong>
-                    <input type="text" name="name" class="form-control" placeholder="name" value="{{$employee->company_id}}">
+
+                    <select class="custom-select" name="company_id" disabled {{ $errors->has('company_id') ? 'error' : '' }}>
+                        @foreach($companies as $company)
+                            <option value="{{$company->id}}">{{$company->name}}</option>
+                        @endforeach
+                    </select>
                 </div>
             </div>
 

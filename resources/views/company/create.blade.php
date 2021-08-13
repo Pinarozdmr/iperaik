@@ -85,8 +85,8 @@
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>Web:</strong>
-                    <input type="text" value="{{old('website')}}" name="website" class="form-control"
-                           placeholder="website">
+                    <input type="text" value="{{old('website')}}" name="website" class="form-control" placeholder="website">
+
                 </div>
             </div>
 
@@ -101,6 +101,7 @@
                             {{$errors->first('phone')}}
                         </div>
                     @endif
+
                 </div>
             </div>
 
