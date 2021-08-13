@@ -39,7 +39,7 @@
             </div>
         @endif
 
-        <form action="{{ route('image.upload.post') }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('image.upload.post') }}" value="{{old('image')}}" method="POST" enctype="multipart/form-data">
 
             @csrf
             <div class="col-xs-12 col-sm-12 col-md-12">
@@ -63,8 +63,7 @@
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>CompanyName:</strong>
-                    <input type="text" value="{{old('email')}}" name="name"
-                           class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}"
+                    <input type="text" value="{{old('name')}}" name="name"  class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}"
                            placeholder="company name">
 
                     @if($errors->has('name'))
@@ -94,7 +93,7 @@
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>Phone:</strong>
-                    <input type="text"  name="phone" class="form-control {{$errors-> has('phone') ? 'is-invalid' : ''}}" placeholder="phone">
+                    <input type="text" value="{{old('phone')}}" name="phone" class="form-control {{$errors-> has('phone') ? 'is-invalid' : ''}}" placeholder="phone">
 
                     <!-- Error -->
                     @if($errors->has ('phone'))

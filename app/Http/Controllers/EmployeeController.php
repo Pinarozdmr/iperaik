@@ -71,7 +71,7 @@ class EmployeeController extends Controller
      */
     public function edit(Employee $employee)
     {
-        return view('employees.edit', [
+        return view('employee.edit', [
             'employee' => $employee,
             'companies' => Company::all(),
         ]);
@@ -87,7 +87,7 @@ class EmployeeController extends Controller
      * @param Employee $employee
      * @return Response
      */
-    public function update(Request $request, Employee $employee): Response
+    public function update(Request $request, Employee $employee)
     {
         $employee->update($request->all());
 
