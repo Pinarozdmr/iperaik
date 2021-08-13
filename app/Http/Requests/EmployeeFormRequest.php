@@ -27,8 +27,8 @@ class EmployeeFormRequest extends FormRequest
         return [
                 'firstname'=>'required',
                 'lastname'=>'required',
-                'email' =>'required|email',
-                'phone' =>'required',
+                'email' =>'nullable|email',
+                'phone' =>'required|numeric|min:11',
                 'company_id' => 'required',
         ];
 

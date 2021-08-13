@@ -71,9 +71,6 @@ class CompanyController extends Controller
      */
     public function store(CompanyFormRequest $request)
     {
-        $request->validate([
-        ]);
-
         Company::create($request->all());
 
         $input=$request->all();

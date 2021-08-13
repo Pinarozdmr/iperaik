@@ -94,7 +94,7 @@
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>Phone:</strong>
-                    <input type="text" value="{{old('phone')}}" name="phone" class="form-control" @if($errors->has('phone')) is-invalid @endif " placeholder="phone">
+                    <input type="text"  name="phone" class="form-control {{$errors-> has('phone') ? 'is-invalid' : ''}}" placeholder="phone">
 
                     <!-- Error -->
                     @if($errors->has ('phone'))

@@ -16,7 +16,7 @@ class Company extends Model
     public $timestamps=true;
 
     protected $fillable = [
-        'image', 'name', 'address', 'phone', 'email', 'website',
+        'image', 'name', 'email', 'website','phone','address'
     ];
 
 
@@ -27,6 +27,6 @@ class Company extends Model
     }
     public static function getCompanies(): array
     {
-        return DB::table('companies')->select('image','name','address','phone','email','website')->get()->toArray();
+        return DB::table('companies')->select('image','name','email','website','phone','address')->get()->toArray();
     }
 }
