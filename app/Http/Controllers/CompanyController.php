@@ -31,7 +31,7 @@ class CompanyController extends Controller
      * @return Response
      */
 
-    public function imageUploadPost(Request $request)
+    public function imageUploadPost(Request $request): Response
     {
 
         $imageName = time().'.'.$request->image->extension();
@@ -71,7 +71,7 @@ class CompanyController extends Controller
      */
     public function store(CompanyFormRequest $request)
     {
-        Company::create($request->all());
+        //Company::create($request->all());
 
         $input=$request->all();
         if ($image = $request->file('image')) {
