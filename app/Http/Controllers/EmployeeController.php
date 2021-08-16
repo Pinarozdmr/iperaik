@@ -20,7 +20,7 @@ class EmployeeController extends Controller
      */
     public function index()
     {
-        $employees= Employee:: paginate(0);
+        $employees= Employee::all();
         return view('employee.index', compact('employees'));
 
     }
@@ -45,7 +45,9 @@ class EmployeeController extends Controller
      */
     public function store(EmployeeFormRequest $request)
     {
-        Employee::create($request->all());
+        $input=$request->all();
+
+        Employee::create($input);
 
         return redirect()->route('employee.index')
             ->with('success','Employees created successfully.');

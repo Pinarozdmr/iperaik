@@ -12,8 +12,6 @@ class Company extends Model
 {
     use HasFactory,Notifiable;
 
-    protected $table = 'companies';
-    public $timestamps=true;
 
     protected $fillable = [
         'image', 'name', 'email', 'website','phone','address'

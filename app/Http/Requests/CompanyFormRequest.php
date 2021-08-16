@@ -24,10 +24,10 @@ class CompanyFormRequest extends FormRequest
     public function rules()
     {
         return [
-            'image'=>'nullable|mimes:jpeg,png,jpg,gif,svg'|'image',
+            'image'=>'nullable|mimes:jpeg,png,jpg,gif,svg|image',
             'name'=>'required',
             'email'=>'nullable|email|unique:companies',
-            'website' =>'nullable|url',
+//            'website' =>'nullable|url',
             'phone' =>'required|numeric|min:11',
             'address'=>'nullable',
         ];

@@ -12,6 +12,8 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Storage;
 use App\Models\Category;
+use Illuminate\Support\Str;
+
 class CompanyController extends Controller
 {
     /**
@@ -38,7 +40,6 @@ class CompanyController extends Controller
 
         $request->image->move(public_path('images'), $imageName);
 
-        /* Store $imageName name in DATABASE from HERE */
 
         return back()
             ->with('success','You have successfully upload image.')
@@ -71,18 +72,14 @@ class CompanyController extends Controller
      */
     public function store(CompanyFormRequest $request)
     {
-        //Company::create($request->all());
-
         $input=$request->all();
         if ($image = $request->file('image')) {
-            $destinationPath = 'app/';
-            $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
+            $profileImage =Str::random(20).'_'. date('YmdHis') . "." . $image->getClientOriginalExtension();
 
             $input['image']=$profileImage;
             Storage::disk('public')->putFileAs('company_logo',$image,$profileImage);
         }
-
-       Company::create($input);
+        Company::create($input);
 
         return redirect()->route('company.index')
             ->with('success','Companies created successfully.');
@@ -126,20 +123,14 @@ class CompanyController extends Controller
      */
     public function update(Request $request, Company $company)
     {
-        $request->validate([
-        ]);
 
-        $company->update($request->all());
-
-        $input = $request->all();
+        $input=$request->all();
         if ($image = $request->file('image')) {
-            $destinationPath = 'app/';
-            $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
-            $input['image'] = "$profileImage";
-        }else{
-            unset($input['image']);
-        }
+            $profileImage =Str::random(20).'_'. date('YmdHis') . "." . $image->getClientOriginalExtension();
 
+            $input['image']=$profileImage;
+            Storage::disk('public')->putFileAs('company_logo',$image,$profileImage);
+        }
         $company->update($input);
 
         return redirect()->route('company.index')
