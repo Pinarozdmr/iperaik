@@ -84,11 +84,21 @@
         </div>
     </nav>
 
-    <main class="py-4">
-        <div class="container">
-            @yield('content')
+{{--    <main class="py-4">--}}
+{{--        <div class="container">--}}
+{{--            @yield('content')--}}
+{{--        </div>--}}
+{{--    </main>--}}
+
+    <div class="content-wrapper p-sm-4 bg-white">
+        <div class="content">
+            <div class="card-body">
+                <div class="container-fluid bg-light">
+                    @yield('content')
+                </div>
+            </div>
         </div>
-    </main>
+    </div>
 </div>
 </body>
 </html>

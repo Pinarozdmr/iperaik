@@ -108,7 +108,12 @@ class CompanyController extends Controller
      */
     public function edit(Company $company)
     {
-        return view('company.edit',compact('company'));
+       // return view('company.edit',compact('company'));
+
+        return view('company.edit', [
+            'company' => $company,
+            'companies' => Company::all(),
+        ]);
 
     }
 

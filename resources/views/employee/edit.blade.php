@@ -67,9 +67,10 @@
                 <div class="form-group">
                     <strong>CompanyName</strong>
 
-                    <select class="custom-select" name="company_id" disabled {{ $errors->has('company_id') ? 'error' : '' }}>
+                    <select class="custom-select" name="company_id" {{ $errors->has('company_id') ? 'error' : '' }}>
                         @foreach($companies as $company)
-                            <option value="{{$company->id}}">{{$company->name}}</option>
+                            <option @if($employee->company->name===$company->name) selected
+                            @endif value="{{ $company->id }}">{{$company->name}}</option>
                         @endforeach
                     </select>
                 </div>
