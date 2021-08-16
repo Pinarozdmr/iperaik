@@ -27,7 +27,7 @@ class CompanyFormRequest extends FormRequest
             'image'=>'nullable|mimes:jpeg,png,jpg,gif,svg|image',
             'name'=>'required',
             'email'=>'nullable|email|unique:companies',
-//            'website' =>'nullable|url',
+            'website' =>'nullable|url',
             'phone' =>'required|numeric|min:11',
             'address'=>'nullable',
         ];

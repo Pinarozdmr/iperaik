@@ -75,7 +75,6 @@ class CompanyController extends Controller
         $input=$request->all();
         if ($image = $request->file('image')) {
             $profileImage =Str::random(20).'_'. date('YmdHis') . "." . $image->getClientOriginalExtension();
-
             $input['image']=$profileImage;
             Storage::disk('public')->putFileAs('company_logo',$image,$profileImage);
         }
