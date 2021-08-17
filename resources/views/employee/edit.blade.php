@@ -21,19 +21,19 @@
     </div>
    <hr>
 
-    @if($errors->any())
-        <div class="alert alert-danger">
-            <strong>Whoops!</strong>There were some problems with your input.<br><br>
-            <ul>
-                @foreach($errors->all() as $error)
-                    <li>{{$error}}</li>
-                @endforeach
-            </ul>
-        </div>
+{{--    @if($errors->any())--}}
+{{--        <div class="alert alert-danger">--}}
+{{--            <strong>Whoops!</strong>There were some problems with your input.<br><br>--}}
+{{--            <ul>--}}
+{{--                @foreach($errors->all() as $error)--}}
+{{--                    <li>{{$error}}</li>--}}
+{{--                @endforeach--}}
+{{--            </ul>--}}
+{{--        </div>--}}
 
-    @endif
+{{--    @endif--}}
 
-    <form action="{{route('employee.update',$employee->id)}}" method="POST">
+    <form action="{{route('employee.update',$employee->id)}}" method="POST" enctype="multipart/form-data">
 
         @csrf
         @method('PUT')
@@ -42,30 +42,52 @@
 
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
-
                     <strong>FirstName:</strong>
-                    <input type="text" name="firstname" class="form-control" placeholder="firstname" value="{{$employee->firstname}}">
+                    <input type="text" name="firstname" class="form-control {{ $errors->has('firstname') ? 'is-invalid' : '' }}" placeholder="firstname" value="{{$employee->firstname}}">
+                    @if($errors->has('firstname'))
+                        <div class="invalid-feedback">
+                            {{ $errors->first('firstname') }}
+                        </div>
+                    @endif
                 </div>
             </div>
 
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>LastName</strong>
-                    <input type="text" name="lastname" class="form-control" placeholder="name" value="{{$employee->lastname}}">
+                    <input type="text" name="lastname" class="form-control {{ $errors->has('lastname') ? 'is-invalid' : '' }} " placeholder="lastname" value="{{$employee->lastname}}">
+                    @if($errors->has('lastname'))
+                        <div class="invalid-feedback">
+                            {{ $errors->first('lastname') }}
+                        </div>
+                    @endif
+
                 </div>
             </div>
 
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>Email</strong>
-                    <input type="text" name="email" class="form-control" placeholder="email" value="{{$employee->email}}">
+                    <input type="text" name="email" class="form-control {{ $errors->has('email') ? 'is-invalid' : '' }}" placeholder="email" value="{{$employee->email}}">
+
+                    @if($errors->has('email'))
+                        <div class="invalid-feedback">
+                            {{ $errors->first('email') }}
+                        </div>
+                    @endif
                 </div>
             </div>
 
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>Phone</strong>
-                    <input type="text" name="phone" class="form-control" placeholder="phone" value="{{$employee->phone}}">
+                    <input type="text" name="phone" class="form-control {{ $errors->has('phone') ? 'is-invalid' : '' }}" placeholder="phone" value="{{$employee->phone}}">
+                    @if($errors->has('phone'))
+                        <div class="invalid-feedback">
+                            {{ $errors->first('phone') }}
+                        </div>
+                    @endif
+
                 </div>
             </div>
 

@@ -27,11 +27,9 @@
             </div>
 
             <img src="images/{{ Session::get('image') }}">
-
         @endif
 
         @if (count($errors) > 0)
-
             <div class="alert alert-danger">
                 <strong>Whoops!</strong> There were some problems with your input.
                 <ul>
@@ -43,7 +41,6 @@
         @endif
 
         <form action="{{ route('image.upload.post') }}" value="{{old('image')}}" method="POST" enctype="multipart/form-data">
-
             @csrf
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <strong>Image:</strong>
@@ -55,19 +52,11 @@
                 </div>
             </div>
            <br>
-            {{--            <div class="col-xs-12 col-sm-12 col-md-12">--}}
-            {{--                <div class="form-group">--}}
-            {{--                    <strong>Image</strong>--}}
-            {{--                    <input type="file" name="image" class="form-control" placeholder="image" required accept="image/*">--}}
-
-            {{--                </div>--}}
-            {{--            </div>--}}
 
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>CompanyName:</strong>
-                    <input type="text" value="{{old('name')}}" name="name"  class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}"
-                           placeholder="company name">
+                    <input type="text" value="{{old('name')}}" name="name"  class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}" placeholder="company name">
 
                     @if($errors->has('name'))
                         <div class="invalid-feedback">
@@ -75,7 +64,6 @@
                         </div>
                     @endif
                 </div>
-
 
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12">
@@ -93,13 +81,16 @@
                 </div>
             </div>
 
-
-
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
-                    <strong>Web:</strong>
-                    <input type="text" value="{{old('website')}}" name="website" class="form-control" placeholder="website">
-
+                    <strong>Web Site:</strong>
+                    <input type="text" value="{{old('website')}}" name="website" class="form-control {{$errors-> has('website') ? 'is-invalid' : ''}}" placeholder="website">
+                    <!-- Error -->
+                    @if($errors->has ('website'))
+                        <div class="invalid-feedback">
+                            {{$errors->first('website')}}
+                        </div>
+                    @endif
                 </div>
             </div>
 

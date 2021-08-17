@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\CompanyFormRequest;
 use App\Models\Company;
+use App\Models\Employee;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
@@ -11,7 +12,6 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Storage;
-use App\Models\Category;
 use Illuminate\Support\Str;
 
 class CompanyController extends Controller
@@ -30,10 +30,10 @@ class CompanyController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return Response
+     * @return RedirectResponse
      */
 
-    public function imageUploadPost(Request $request): Response
+    public function imageUploadPost(Request $request): RedirectResponse
     {
 
         $imageName = time().'.'.$request->image->extension();
@@ -61,7 +61,9 @@ class CompanyController extends Controller
 
     public function create()
     {
-        return view('company.create');
+        return view('company.create', [
+            'employees' => Employee::all(),
+        ]);
     }
 
     /**
@@ -78,6 +80,7 @@ class CompanyController extends Controller
             $input['image']=$profileImage;
             Storage::disk('public')->putFileAs('company_logo',$image,$profileImage);
         }
+
         Company::create($input);
 
         return redirect()->route('company.index')
@@ -101,15 +104,16 @@ class CompanyController extends Controller
      *
      * @param Company $company
      * @return Application|Factory|View
+     *
      */
     public function edit(Company $company)
     {
-       // return view('company.edit',compact('company'));
+        return view('company.edit', compact('company'));
 
-        return view('company.edit', [
-            'company' => $company,
-            'companies' => Company::all(),
-        ]);
+//        return view('company.edit', [
+//            'company' => $company,
+//            'companies' => Company::all(),
+//            ]);
 
     }
 
@@ -118,9 +122,9 @@ class CompanyController extends Controller
      *
      * @param Request $request
      * @param Company $company
-     * @return Response
+     * @return RedirectResponse
      */
-    public function update(Request $request, Company $company)
+    public function update(CompanyFormRequest $request, Company $company)
     {
 
         $input=$request->all();
@@ -136,12 +140,11 @@ class CompanyController extends Controller
             ->with('success','Company updated successfully');
     }
 
-
     /**
      * Remove the specified resource from storage.
      *
      * @param  int  $id
-     * @return Response
+     * @return RedirectResponse
      */
     public function destroy(Company $company)
     {
@@ -149,8 +152,5 @@ class CompanyController extends Controller
 
         return redirect()->route('company.index')
             ->with('success','Company deleted successfully.');
-
-
     }
-
 }

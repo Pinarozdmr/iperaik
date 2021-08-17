@@ -16,7 +16,7 @@ class EmployeeController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return Response
+     * @return Application|Factory|View|Response
      */
     public function index()
     {
@@ -36,12 +36,13 @@ class EmployeeController extends Controller
             'companies' => Company::all(),
         ]);
     }
+         //return view('company.create');
 
     /**
      * Store a newly created resource in storage.
      *
      * @param  EmployeeFormRequest  $request
-     * @return Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function store(EmployeeFormRequest $request)
     {
@@ -62,7 +63,6 @@ class EmployeeController extends Controller
     public function show(Employee $employee)
     {
         return view('employee.show',compact('employee'));
-
     }
 
     /**
@@ -78,20 +78,20 @@ class EmployeeController extends Controller
             'companies' => Company::all(),
         ]);
 
-        //return view('employee.edit',compact('employee'));
+      // return view('employee.edit', compact('employee'));
 
     }
-
     /**
      * Update the specified resource in storage.
      *
      * @param Request $request
      * @param Employee $employee
-     * @return Response
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(Request $request, Employee $employee)
+    public function update(EmployeeFormRequest $request, Employee $employee)
     {
-        $employee->update($request->all());
+        $input=$request->all();
+        $employee->update($input);
 
         return redirect()->route('employee.index')
             ->with('success','Employee updated successfully.');
@@ -101,7 +101,7 @@ class EmployeeController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  int $id
-     * @return Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function destroy(Employee $employee)
     {
@@ -111,6 +111,5 @@ class EmployeeController extends Controller
             ->with('success','Employee deleted successfully.');
 
     }
-
 
 }

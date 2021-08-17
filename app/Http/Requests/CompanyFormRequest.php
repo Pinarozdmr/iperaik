@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class CompanyFormRequest extends FormRequest
 {
@@ -23,12 +24,18 @@ class CompanyFormRequest extends FormRequest
      */
     public function rules()
     {
+        $id= $this->route('company')->id;
+
         return [
             'image'=>'nullable|mimes:jpeg,png,jpg,gif,svg|image',
             'name'=>'required',
-            'email'=>'nullable|email|unique:companies',
-            'website' =>'nullable|url',
-            'phone' =>'required|numeric|min:11',
+            'email'=>[
+                'nullable',
+                'email',
+                Rule::unique('companies')->ignore($id)
+            ],
+            'website' =>'nullable',
+            'phone' =>'required|numeric|digits:11',
             'address'=>'nullable',
         ];
     }
