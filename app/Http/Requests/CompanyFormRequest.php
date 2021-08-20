@@ -24,7 +24,7 @@ class CompanyFormRequest extends FormRequest
      */
     public function rules()
     {
-        $id= $this->route('company')->id;
+        $id= $this->route('company')?->id;
 
         return [
             'image'=>'nullable|mimes:jpeg,png,jpg,gif,svg|image',

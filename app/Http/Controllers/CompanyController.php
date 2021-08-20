@@ -62,7 +62,7 @@ class CompanyController extends Controller
     public function create()
     {
         return view('company.create', [
-            'employees' => Employee::all(),
+            'employees' => Employee::all(),   
         ]);
     }
 
