@@ -15,7 +15,6 @@ class CompanyResource extends JsonResource
     public function toArray($request)
     {
         $model=$this->resource;
-        dd($model);
         return [
             'name'=>$model->name,
         ];

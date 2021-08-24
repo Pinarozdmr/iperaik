@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\CompanyExport;
 use App\Http\Requests\CompanyFormRequest;
 use App\Models\Company;
 use App\Models\Employee;
@@ -13,6 +14,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+use Maatwebsite\Excel\Excel;
 
 class CompanyController extends Controller
 {
@@ -62,7 +64,7 @@ class CompanyController extends Controller
     public function create()
     {
         return view('company.create', [
-            'employees' => Employee::all(),   
+            'employees' => Employee::all(),
         ]);
     }
 
@@ -152,5 +154,13 @@ class CompanyController extends Controller
 
         return redirect()->route('company.index')
             ->with('success','Company deleted successfully.');
+
     }
+
+    public function export()
+    {
+        return new CompanyExport;
+    }
+
 }
+
