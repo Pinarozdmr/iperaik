@@ -29,9 +29,7 @@
             {{--        </div>--}}
             {{--    @endif--}}
 
-            {{--    <div class="card-body">--}}
-            <div id="company-form" action="{{route('company.update',$company->id)}}" method="POST"
-                  enctype="multipart/form-data">
+            <form action="{{route('company.update',$company->id)}}" method="POST" enctype="multipart/form-data">
 
                 @csrf
                 @method('PUT')
@@ -135,9 +133,9 @@
                     <div class="col-lg-12 margin-tb text-center">
                             <a href="{{ route('company.index') }}" class="btn btn-dark" title="Cancel">Cancel</a>
                             <button type="reset" class="btn btn-dark m-1" title="Default" value="Default">Default</button>
-                            <button type="submit" class="btn btn-dark " title="Update">Update</button>
+                            <button type="submit" class="btn btn-dark" title="Update">Update</button>
                     </div>
-            </div>
+            </form>
             </form>
         </div>
     </div>
