@@ -25,8 +25,8 @@ class Employee extends Model
         return $this->belongsTo(Company::class);
     }
 
-    public static function getEmployees(): array
+    public static function getEmployee(): array
     {
-        return DB::table('employees')->select('id','firstname','lastname','email','phone','company_id')->get()->toArray();
+        return DB::table('employees')->select('id', 'firstname', 'lastname', 'email', 'phone', 'company_id')->get()->toArray();
     }
 }

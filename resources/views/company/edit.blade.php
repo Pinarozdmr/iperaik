@@ -34,7 +34,16 @@
                 @csrf
                 @method('PUT')
 
-
+                <div class="card border-secondary" style="width: fit-content">
+                    <div class="form-group col-xs-12 col-sm-12 col-md-12">
+                    <div style="width: 110px; height: 110px;">
+                        <div class="form-group border-dark ">
+                            <img src="{{$company->logo_image}}" alt="" width="110½" height="110%" style="float: left;">
+                        </div>
+                    </div>
+                </div>
+                </div>
+<br>
 {{--                <div class="row">--}}
                     <div class="col-xs-12 col-sm-12 col-md-12">
                         <div class="form-group">
@@ -121,17 +130,10 @@
                         </div>
                     </div>
 
-                    <div class="col-xs-12 col-sm-12 col-md-12">
-                        <div style="width: 150px; height: 150px;">
-                            <div class="form-group border-dark p-1">
-                                <img src="{{$company->logo_image}}" alt="" width="100%" height="100%">
-                            </div>
-                        </div>
-                    </div>
-
 
                     <div class="col-lg-12 margin-tb text-center">
-                            <a href="{{ route('company.index') }}" class="btn btn-dark" title="Cancel">Cancel</a>
+                        <hr class="border-secondary "><br>
+                        <a href="{{ route('company.index') }}" class="btn btn-dark" title="Cancel">Cancel</a>
                             <button type="reset" class="btn btn-dark m-1" title="Default" value="Default">Default</button>
                             <button type="submit" class="btn btn-dark" title="Update">Update</button>
                     </div>

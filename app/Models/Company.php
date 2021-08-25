@@ -22,8 +22,14 @@ class Company extends Model
         return Storage::url('company_logo/'.$this->image);
 
     }
-    public static function getCompanies(): array
+    public static function getCompany(): array
     {
         return DB::table('companies')->select('image','name','email','website','phone','address')->get()->toArray();
     }
+
+//    public static function getCompany()
+//    {
+//       $records = DB::table('companies')->select('name', 'email', 'website','phone','address')->get()->toArray();
+//       return $records;
+//    }
 }

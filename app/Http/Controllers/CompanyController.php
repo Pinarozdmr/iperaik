@@ -5,67 +5,74 @@ namespace App\Http\Controllers;
 use App\Exports\CompanyExport;
 use App\Http\Requests\CompanyFormRequest;
 use App\Models\Company;
-use App\Models\Employee;
-use Illuminate\Contracts\Foundation\Application;
-use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
+use App\Repositories\CompanyRepository;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
-use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Str;
-use Maatwebsite\Excel\Excel;
+use Maatwebsite\Excel\Facades\Excel;
+use Symfony\Component\HttpFoundation\BinaryFileResponse;
 
 class CompanyController extends Controller
 {
+
+    private CompanyRepository $companyRepository;
+
+    public function __construct(CompanyRepository $companyRepository)
+    {
+        $this->companyRepository = $companyRepository;
+    }
+
     /**
      * Display a listing of the resource.
      *
-     * @return Response
+     * @return View
      */
 
-    public function imageUpload()
+    public function imageUpload(): View
     {
         return view('imageUpload');
     }
 
-    /**
-     * Display a listing of the resource.
-     *
-     * @return RedirectResponse
-     */
 
     public function imageUploadPost(Request $request): RedirectResponse
     {
-
-        $imageName = time().'.'.$request->image->extension();
+        $imageName = time() . '.' . $request->image->extension();
 
         $request->image->move(public_path('images'), $imageName);
 
-
         return back()
-            ->with('success','You have successfully upload image.')
-            ->with('image',$imageName);
+            ->with('success', 'You have successfully upload image.')
+            ->with('image', $imageName);
 
     }
-    public function index()
+
+    public function index(Request $request): View|RedirectResponse
     {
-        $companies= Company::all();
+        $companies = $this->companyRepository->index($request);
+
+        if (!$companies) {
+            return redirect()->route('company.create');
+        }
         return view('company.index', compact('companies'));
+
+        //$companies= Company::all();
+        // return view('company.index', compact('companies'));
     }
 
     /**
      * Show the form for creating a new resource.
      *
-     * @return Application|Factory|View
+     * @return View
      */
 
 
-    public function create()
+    public function create(): View
     {
-        return view('company.create', [
-            'employees' => Employee::all(),
-        ]);
+
+        return view('company.create');
+//        return view('company.create', [
+//            'employees' => Employee::all(),
+//        ]);
     }
 
     /**
@@ -74,19 +81,19 @@ class CompanyController extends Controller
      * @param CompanyFormRequest $request
      * @return RedirectResponse
      */
-    public function store(CompanyFormRequest $request)
-    {
-        $input=$request->all();
-        if ($image = $request->file('image')) {
-            $profileImage =Str::random(20).'_'. date('YmdHis') . "." . $image->getClientOriginalExtension();
-            $input['image']=$profileImage;
-            Storage::disk('public')->putFileAs('company_logo',$image,$profileImage);
-        }
 
-        Company::create($input);
+    public function store(CompanyFormRequest $request): RedirectResponse
+    {
+
+        $this->companyRepository->store($request);
 
         return redirect()->route('company.index')
-            ->with('success','Companies created successfully.');
+            ->with('success', 'Company created successfully.');
+
+//        Company::create($input);
+//
+//        return redirect()->route('company.index')
+//            ->with('success','Companies created successfully.');
 
     }
 
@@ -94,21 +101,21 @@ class CompanyController extends Controller
      * Display the specified resource.
      *
      * @param Company $company
-     * @return Application|Factory|View
+     * @return View
      */
-    public function show(Company $company)
+    public function show(Company $company): View
     {
-        return view('company.show',compact('company'));
+        return view('company.show', compact('company'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
      * @param Company $company
-     * @return Application|Factory|View
+     * @return View
      *
      */
-    public function edit(Company $company)
+    public function edit(Company $company): View
     {
         return view('company.edit', compact('company'));
 
@@ -122,45 +129,40 @@ class CompanyController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param Request $request
+     * @param CompanyFormRequest $request
      * @param Company $company
      * @return RedirectResponse
      */
-    public function update(CompanyFormRequest $request, Company $company)
+    public function update(CompanyFormRequest $request, Company $company): RedirectResponse
     {
-
-        $input=$request->all();
-        if ($image = $request->file('image')) {
-            $profileImage =Str::random(20).'_'. date('YmdHis') . "." . $image->getClientOriginalExtension();
-
-            $input['image']=$profileImage;
-            Storage::disk('public')->putFileAs('company_logo',$image,$profileImage);
-        }
-        $company->update($input);
+        $this->companyRepository->update($request, $company);
 
         return redirect()->route('company.index')
-            ->with('success','Company updated successfully');
+            ->with('success', 'Company updated successfully');
+
+        // $company->update($input);
+
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param Company $company
      * @return RedirectResponse
      */
-    public function destroy(Company $company)
+    public function destroy(Company $company): RedirectResponse
     {
         $company->delete();
 
         return redirect()->route('company.index')
-            ->with('success','Company deleted successfully.');
+            ->with('success', 'Company deleted successfully.');
 
     }
 
-    public function export()
+    public function export(Request $request): BinaryFileResponse
     {
-        return new CompanyExport;
+        $type = $request->input('type');
+        return Excel::download(new CompanyExport, 'company_list.' . $type);
     }
-
 }
 

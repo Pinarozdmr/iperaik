@@ -32,7 +32,7 @@
                     </ul>
                 </div>
             @endif
-            <div action="{{route('employee.store')}}" method="POST" enctype="multipart/form-data">
+            <form action="{{route('employee.store')}}" method="POST" enctype="multipart/form-data">
 
                 @csrf
 
@@ -114,7 +114,6 @@
                         Add
                     </button>
                 </div>
-            </div>
             </form>
         </div>
     </div>
