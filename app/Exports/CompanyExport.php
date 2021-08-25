@@ -3,7 +3,6 @@
 namespace App\Exports;
 
 use App\Models\Company;
-use Illuminate\Contracts\Support\Responsable;
 use Maatwebsite\Excel\Concerns\Exportable;
 use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\WithHeadings;
@@ -15,6 +14,7 @@ class CompanyExport implements FromCollection,WithHeadings
     public function headings():array
     {
         return [
+            'id',
             'name',
             'email',
             'website',
@@ -26,9 +26,9 @@ class CompanyExport implements FromCollection,WithHeadings
     /**
     * @return \Illuminate\Support\Collection
     */
-    public function collection()
+    public function collection(): \Illuminate\Support\Collection
     {
-        //return Company::all();
-        return collect(Company::getCompany());
+        return Company::all();
+        //return collect(Company::getCompany());
     }
 }

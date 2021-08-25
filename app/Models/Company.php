@@ -24,7 +24,7 @@ class Company extends Model
     }
     public static function getCompany(): array
     {
-        return DB::table('companies')->select('image','name','email','website','phone','address')->get()->toArray();
+        return DB::table('companies')->select('id','image','name','email','website','phone','address')->get()->toArray();
     }
 
 //    public static function getCompany()

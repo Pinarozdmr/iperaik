@@ -13,14 +13,9 @@ use Illuminate\Support\Str;
 class CompanyRepository
 {
 
-    public function index(Request $request)
+    public function index()
     {
         return Company::query()
-            ->when($request->input('name'), fn($query, $value) => $query->where('name', 'LIKE', '%' . $value . '%'))
-            ->when($request->input('email'), fn($query, $value) => $query->where('email', 'LIKE', '%' . $value . '%'))
-            ->when($request->input('website'), fn($query, $value) => $query->where('website', 'LIKE', '%' . $value . '%'))
-            ->when($request->input('phone'), fn($query, $value) => $query->where('phone', 'LIKE', '%' . $value . '%'))
-            ->when($request->input('address'), fn($query, $value) => $query->where('address', 'LIKE', '%' . $value . '%'))
             ->paginate(10);
     }
 

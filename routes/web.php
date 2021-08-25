@@ -27,7 +27,8 @@ Route::group(['middleware'=>'auth'],function (){
 
     Route::get('image-upload', [ CompanyController::class, 'imageUpload' ])->name('image.upload');
     Route::post('image-upload', [ CompanyController::class, 'imageUploadPost' ])->name('image.upload.post');
-    Route::get('companies/export/', 'CompanyController@export');
+    Route::get('/company/export',[CompanyController::class,'export']);
+
 });
 
 
