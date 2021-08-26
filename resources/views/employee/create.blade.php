@@ -52,7 +52,7 @@
                         <strong>First Name</strong>
                         <input type="text" title="First Name" value="{{old('firstname')}}" name="firstname"
                                class="form-control {{ $errors->has('firstname') ? 'is-invalid' : '' }}"
-                               placeholder="firstname">
+                               placeholder="First Name">
 
                         @if($errors->has('firstname'))
                             <div class="invalid-feedback">
@@ -67,7 +67,7 @@
                         <strong>Last Name</strong>
                         <input type="text" title="Last Name" value="{{old('lastname')}}" name="lastname"
                                class="form-control {{ $errors->has('lastname') ? 'is-invalid' : '' }}"
-                               placeholder="lastname">
+                               placeholder="Last Name">
 
                         @if($errors->has('lastname'))
                             <div class="invalid-feedback">
@@ -81,8 +81,15 @@
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
                         <strong>Email</strong>
-                        <input type="text" title="Email" value="{{old('email')}}" name="email" class="form-control"
-                               placeholder="email">
+                        <input type="text" title="Email" value="{{old('email')}}" name="email" class="form-control {{$errors-> has('email') ? 'is-invalid' : ''}}"
+                               placeholder="Email">
+
+                        @if($errors->has ('email'))
+                            <div class="invalid-feedback">
+                                {{$errors->first('email')}}
+                            </div>
+                        @endif
+
                     </div>
                 </div>
 
@@ -90,7 +97,7 @@
                     <div class="form-group">
                         <strong>Phone</strong>
                         <input type="text" title="Phone" value="{{old('phone')}}" name="phone"
-                               class="form-control {{$errors-> has('phone') ? 'is-invalid' : ''}}" placeholder="phone">
+                               class="form-control {{$errors-> has('phone') ? 'is-invalid' : ''}}" placeholder="Phone">
 
                         @if($errors->has ('phone'))
                             <div class="invalid-feedback">

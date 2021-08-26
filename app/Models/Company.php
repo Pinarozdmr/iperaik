@@ -14,7 +14,12 @@ class Company extends Model
 
 
     protected $fillable = [
-        'image', 'name', 'email', 'website','phone','address'
+        'image',
+        'name',
+        'email',
+        'website',
+        'phone',
+        'address'
     ];
 
     public function getLogoImageAttribute(): string

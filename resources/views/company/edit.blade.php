@@ -34,12 +34,11 @@
                 @csrf
                 @method('PUT')
 
-                <div class="card border-secondary" style="width: fit-content">
-                    <div class="form-group col-xs-12 col-sm-12 col-md-12">
+                <div class="card border-secondary" style="margin: auto; width: fit-content">
+                    <div class="col-xs-12 col-sm-12 col-md-12" style="width: fit-content; margin: auto ">
                     <div style="width: 110px; height: 110px;">
-                        <div class="form-group border-dark ">
                             <img src="{{$company->logo_image}}" alt="" width="110½" height="110%" style="float: left;">
-                        </div>
+
                     </div>
                 </div>
                 </div>
@@ -49,8 +48,9 @@
                         <div class="form-group">
                             <strong>Company Name</strong>
                             <input type="text" title="Company Name" name="name"
-                                   class="form-control {{$errors->has('name') ? 'is-invalid' : '' }}" placeholder="name"
-                                   value="{{$company->name}}">
+                                   class="form-control {{$errors->has('name') ? 'is-invalid' : '' }}" placeholder="Company Name"
+                                   value="{{ old('name', $company->name) }}">
+
                             @if($errors->has('name'))
                                 <div class="invalid-feedback">
                                     {{ $errors->first('name') }}
@@ -64,8 +64,8 @@
                             <strong>Email</strong>
                             <input type="text" title="Email" name="email"
                                    class="form-control {{$errors-> has('email') ? 'is-invalid' : ''}}"
-                                   placeholder="email"
-                                   value="{{$company->email}}">
+                                   placeholder="Email"
+                                   value="{{ old('email', $company->email) }}">
 
                             <!-- Error -->
                             @if($errors->has ('email'))
@@ -82,8 +82,8 @@
                             <strong>Web Site</strong>
                             <input type="text" title="Web Site" name="website"
                                    class="form-control {{$errors-> has('website') ? 'is-invalid' : ''}}"
-                                   placeholder="web"
-                                   value="{{$company->website}}">
+                                   placeholder="Web Site"
+                                   value="{{ old('website', $company->website) }}">
 
                             <!-- Error -->
                             @if($errors->has ('website'))
@@ -99,8 +99,7 @@
                             <strong>Phone</strong>
                             <input type="text" title="Phone" name="phone"
                                    class="form-control {{$errors-> has('phone') ? 'is-invalid' : ''}}"
-                                   placeholder="phone"
-                                   value="{{$company->phone}}">
+                                   placeholder="Phone" value="{{ old('phone', $company->phone) }}" >
 
                             <!-- Error -->
                             @if($errors->has ('phone'))
@@ -114,8 +113,8 @@
                     <div class="col-xs-12 col-sm-12 col-md-12">
                         <div class="form-group">
                             <strong>Address</strong>
-                            <input type="text" title="Address" name="address" class="form-control" placeholder="address"
-                                   value="{{$company->address}}">
+                            <input type="text" title="Address" name="address" class="form-control" placeholder="Address"
+                                   value="{{ old('address', $company->address) }}">
                         </div>
                     </div>
 

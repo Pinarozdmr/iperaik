@@ -53,7 +53,7 @@
                             <strong>Company Name</strong>
                             <input type="text" value="{{old('name')}}" name="name" title="Company Name"
                                    class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}"
-                                   placeholder="company name">
+                                   placeholder="Company Name">
 
                             @if($errors->has('name'))
                                 <div class="invalid-feedback">
@@ -69,12 +69,12 @@
                             <strong>Email</strong>
                             <input type="text" value="{{old('email')}}" title="Email" name="email"
                                    class="form-control {{$errors-> has('email') ? 'is-invalid' : ''}}"
-                                   placeholder="email">
+                                   placeholder="Email">
 
                             <!-- Error -->
                             @if($errors->has ('email'))
                                 <div class="invalid-feedback">
-                                    {{$errors->first('email')}}x
+                                    {{$errors->first('email')}}
                                 </div>
                             @endif
 
@@ -86,7 +86,7 @@
                             <strong>Web Site</strong>
                             <input type="text" value="{{old('website')}}" title="Web Site" name="website"
                                    class="form-control {{$errors-> has('website') ? 'is-invalid' : ''}}"
-                                   placeholder="website">
+                                   placeholder="Web Site">
                             <!-- Error -->
                             @if($errors->has ('website'))
                                 <div class="invalid-feedback">
@@ -101,7 +101,7 @@
                             <strong>Phone</strong>
                             <input type="text" value="{{old('phone')}}" title="Phone" name="phone"
                                    class="form-control {{$errors-> has('phone') ? 'is-invalid' : ''}}"
-                                   placeholder="phone">
+                                   placeholder="Phone">
 
                             <!-- Error -->
                             @if($errors->has ('phone'))
@@ -117,7 +117,7 @@
                         <div class="form-group">
                             <strong>Address</strong>
                             <input type="text" value="{{old('address')}}" title="Address" name="address"
-                                   class="form-control" placeholder="address">
+                                   class="form-control" placeholder="Address">
                         </div>
                     </div>
 
@@ -125,8 +125,14 @@
                         <strong>Image</strong>
                         <div class="custom-file">
                             <div class="form-group">
-                                <input type="file" name="image" placeholder="image" class="custom-file-input">
+                                <input type="file" name="image" onchange="image" placeholder="image" class="custom-file-input {{$errors-> has('image') ? 'is-invalid' : ''}}">
                                 <label class="custom-file-label" for="customFile">Choose file</label>
+                                <!-- Error -->
+                                @if($errors->has ('phone'))
+                                    <div class="invalid-feedback">
+                                        {{$errors->first('phone')}}
+                                    </div>
+                                @endif
                             </div>
                         </div>
                     </div>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\EmployeeExport;
 use App\Http\Requests\EmployeeFormRequest;
 use App\Models\Company;
 use App\Models\Employee;
@@ -11,6 +12,8 @@ use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
+use Symfony\Component\HttpFoundation\BinaryFileResponse;
 
 class EmployeeController extends Controller
 {
@@ -121,6 +124,11 @@ class EmployeeController extends Controller
         return redirect()->route('employee.index')
             ->with('success', 'Employee deleted successfully.');
 
+    }
+    public function export(Request $request): BinaryFileResponse
+    {
+        $type = $request->input('type');
+        return Excel::download(new EmployeeExport, 'Employee List.' . $type);
     }
 
 }

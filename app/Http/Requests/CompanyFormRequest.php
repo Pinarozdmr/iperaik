@@ -34,7 +34,7 @@ class CompanyFormRequest extends FormRequest
                 'email',
                 Rule::unique('companies')->ignore($id)
             ],
-            'website' =>'nullable',
+            'website' =>'nullable|url',
             'phone' =>'required|numeric|digits:11',
             'address'=>'nullable',
         ];

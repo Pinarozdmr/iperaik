@@ -7,6 +7,7 @@ use App\Http\Requests\CompanyFormRequest;
 use App\Models\Company;
 use Illuminate\Contracts\View\View;
 use App\Repositories\CompanyRepository;
+use Illuminate\Database\QueryException;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
@@ -152,17 +153,24 @@ class CompanyController extends Controller
      */
     public function destroy(Company $company): RedirectResponse
     {
-        $company->delete();
 
-        return redirect()->route('company.index')
-            ->with('success', 'Company deleted successfully.');
+         try {
+             $company->delete();
+        } catch (QueryException){
+
+             return redirect()->route('company.index')
+                ->with('errors',['This company could not be deleted because the company has employee information.']);
+        }
+
+             return redirect()->route('company.index')
+                ->with('success', 'Company deleted successfully.');
 
     }
 
     public function export(Request $request): BinaryFileResponse
     {
         $type = $request->input('type');
-        return Excel::download(new CompanyExport, 'company_list.' . $type);
+        return Excel::download(new CompanyExport, 'Company List.' . $type);
     }
 }
 

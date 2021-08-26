@@ -45,7 +45,6 @@
                     <div class="col-xs-12 col-sm-12 col-md-12">
                         <div class="form-group">
                             <strong>Company Name</strong>
-
                             <select class="custom-select"
                                     name="company_id" {{ $errors->has('company_id') ? 'error' : '' }}>
                                 @foreach($companies as $company)
@@ -60,7 +59,8 @@
                             <strong>First Name</strong>
                             <input type="text" name="firstname"
                                    class="form-control {{ $errors->has('firstname') ? 'is-invalid' : '' }}"
-                                   placeholder="firstname" value="{{$employee->firstname}}">
+                                   placeholder="First Name" value="{{ old('firstname', $employee->firstname) }}">
+
                             @if($errors->has('firstname'))
                                 <div class="invalid-feedback">
                                     {{ $errors->first('firstname') }}
@@ -74,7 +74,8 @@
                             <strong>Last Name</strong>
                             <input type="text" name="lastname"
                                    class="form-control {{ $errors->has('lastname') ? 'is-invalid' : '' }} "
-                                   placeholder="lastname" value="{{$employee->lastname}}">
+                                   placeholder="Last Name" value="{{ old('lastname', $employee->lastname) }}">
+
                             @if($errors->has('lastname'))
                                 <div class="invalid-feedback">
                                     {{ $errors->first('lastname') }}
@@ -89,7 +90,7 @@
                             <strong>Email</strong>
                             <input type="text" name="email"
                                    class="form-control {{ $errors->has('email') ? 'is-invalid' : '' }}"
-                                   placeholder="email" value="{{$employee->email}}">
+                                   placeholder="Email" value="{{ old('email', $employee->email) }}">
 
                             @if($errors->has('email'))
                                 <div class="invalid-feedback">
@@ -104,7 +105,7 @@
                             <strong>Phone</strong>
                             <input type="text" name="phone"
                                    class="form-control {{ $errors->has('phone') ? 'is-invalid' : '' }}"
-                                   placeholder="phone" value="{{$employee->phone}}">
+                                   placeholder="Phone" value="{{ old('phone', $employee->phone) }}">
                             @if($errors->has('phone'))
                                 <div class="invalid-feedback">
                                     {{ $errors->first('phone') }}

@@ -28,7 +28,7 @@
                         </tr>
                         </thead>
                         <tr>
-                            <td>{{$employee->company->name}}></td>
+                            <td>{{$employee->company->name}}</td>
                             <td>{{$employee->firstname}}</td>
                             <td>{{$employee->lastname}}</td>
                             <td>{{$employee->email}}</td>
